@@ -1,0 +1,2 @@
+### GET all titles in database 
+GET http://localhost:8080/titles

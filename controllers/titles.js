@@ -1,5 +1,5 @@
 const mongodb = require('../db/connect');
-//const ObjectId = require('mongodb').ObjectId;
+const ObjectId = require('mongodb').ObjectId;
 const express = require('express');
 const router = express.Router();
 
@@ -19,7 +19,39 @@ const getTitles = async (req, res) => {
   }
 };
 
+const addTitle = async (req, res) => {
+  try {
+  const newTitle = {
+    title: req.body.title,
+    genre: req.body.genre,
+    audience: req.body.audience,
+    publisher: req.body.publisher,
+    ibsn: req.body.ibsn,
+    authorFirstName: req.body.authorFirstName,
+    authorLastName: req.body.authorLastName,          
+  };
+
+  const result = await mongodb.getDb().db().collection('titles').insertOne(newTitle);
+  if (result.acknowledged) {
+    res.status(201).json({
+      message: 'Title added successfully',
+      contactId: result.insertedId
+    });
+  } else {
+    res.status(404).json({
+      message: 'Unable to add title'
+    });
+  }
+} catch (error) {
+  console.error('Error adding title:', error);
+  res.status(500).json({
+    message: 'Unable to add title'
+  });
+}
+};
+
 
 module.exports = {
-    getTitles
+    getTitles,
+    addTitle
 }

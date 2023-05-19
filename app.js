@@ -9,9 +9,9 @@ const app = express();
 app
   //.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument)) //must be first 
   //.use(cors())
-  .use(bodyParser.json())
-  .use(express.json())
-  .use(express.urlencoded({ extended: true }))
+  .use(bodyParser.json()) //express deprecated bodyParser?
+  .use(express.json()) // for parsing json
+  .use(express.urlencoded({ extended: true })) // for parsing 
   .use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, x-Requested-with, Content-Type, Accept, Z-Key'); // Allow CORS so I can test API on React

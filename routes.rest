@@ -1,2 +1,28 @@
 ### GET all titles in database 
 GET http://localhost:8080/titles
+
+### GET all authors in database
+GET http://localhost:8080/authors
+
+### POST add author to database
+POST http://localhost:8080/authors HTTP/1.1 Content-Type: application/json
+
+{
+  "firstName": "Amy",
+  "lastName": "Rosenthal",
+  "birthdate": "April 29, 1965",
+  "website": "whoisamy.com"
+}
+
+### POST add title to database
+POST http://localhost:8080/titles HTTP/1.1 Content-Type: application/json
+
+{
+  "title": "I Wish You More",
+  "genre": "Fiction",
+  "audience": "Children",
+  "publisher": "Chronicle Books LLC",
+  "isbn": "9781452126999",
+  "authorFirstName": "Amy",
+  "authorLastName": "Rosenthal"
+}

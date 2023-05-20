@@ -22,13 +22,14 @@ const getAuthors = async (req, res) => {
 //POST new author
 const addAuthor = async (req, res) => {
     try {
-    const newAuthor = {
+      //console.log('addAuthor', req.body);
+    const newAuthor = {   
+      birthdate: req.body.birthdate,
+      website: req.body.website,
       authorFirstName: req.body.authorFirstName,
-      authorLastName: req.body.authorLastName,
-      birthdate: req.body.birthday,
-      website: req.body.website,          
+      authorLastName: req.body.authorLastName       
     };
-  
+
     const result = await mongodb.getDb().db().collection('authors').insertOne(newAuthor);
     if (result.acknowledged) {
       res.status(201).json({

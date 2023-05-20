@@ -23,8 +23,8 @@ const getAuthors = async (req, res) => {
 const addAuthor = async (req, res) => {
     try {
     const newAuthor = {
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
+      authorFirstName: req.body.authorFirstName,
+      authorLastName: req.body.authorLastName,
       birthdate: req.body.birthday,
       website: req.body.website,          
     };
@@ -33,7 +33,7 @@ const addAuthor = async (req, res) => {
     if (result.acknowledged) {
       res.status(201).json({
         message: 'Author added successfully',
-        contactId: result.insertedId
+        authorId: result.insertedId
       });
     } else {
       res.status(404).json({

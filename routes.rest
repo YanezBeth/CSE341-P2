@@ -8,8 +8,8 @@ GET http://localhost:8080/authors
 POST http://localhost:8080/authors HTTP/1.1 Content-Type: application/json
 
 {
-  "firstName": "Amy",
-  "lastName": "Rosenthal",
+  "authorFirstName": "Amy",
+  "authorLastName": "Rosenthal",
   "birthdate": "April 29, 1965",
   "website": "whoisamy.com"
 }

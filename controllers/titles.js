@@ -35,7 +35,7 @@ const addTitle = async (req, res) => {
   if (result.acknowledged) {
     res.status(201).json({
       message: 'Title added successfully',
-      contactId: result.insertedId
+      titleId: result.insertedId
     });
   } else {
     res.status(404).json({

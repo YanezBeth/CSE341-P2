@@ -26,7 +26,7 @@ const addTitle = async (req, res) => {
     genre: req.body.genre,
     audience: req.body.audience,
     publisher: req.body.publisher,
-    ibsn: req.body.ibsn,
+    isbn: req.body.isbn,
     authorFirstName: req.body.authorFirstName,
     authorLastName: req.body.authorLastName,          
   };

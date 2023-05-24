@@ -11,13 +11,6 @@
     "https"
   ],
   "paths": {
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
     "/titles/": {
       "get": {
         "description": "",

@@ -16,41 +16,29 @@ GET http://localhost:8080/authors
 ###RENDER GET an author by ID (Mo Willems)
 GET https://yanezproject2library.onrender.com/authors/646a85407eab2340292fe61f
 
-### GET an author by ID (Mo Willems)
-GET http://localhost:8080/authors/646a85407eab2340292fe61f
-
 ### GET an author by ID (Amy Krouse Rosenthal)
-GET http://localhost:8080/authors/646a858b7eab2340292fe620
+GET https://yanezproject2library.onrender.com/authors/646a858b7eab2340292fe620
 
 ### RENDER GET a title by ID (Today I Will Fly!)
 GET https://yanezproject2library.onrender.com/titles/64659093b272aefcca51607e
 
-### GET a title by ID (Today I Will Fly!)
-GET http://localhost:8080/titles/64659093b272aefcca51607e
-
 ### GET a title by ID (I Wish You More)
-GET http://localhost:8080/titles/64685775bf42815a12a244e9
+GET https://yanezproject2library.onrender.com/titles/64685775bf42815a12a244e9
 
-
-### GET a title by ID (Test)
-GET http://localhost:8080/titles/646d5f0e57f98a16c4ab4b2a
-
-### GET an author by ID (test)
-GET http://localhost:8080/authors/646d5f0b57f98a16c4ab4b29
 
 ### POST add author to database 
-POST http://localhost:8080/authors HTTP/1.1 
+POST https://yanezproject2library.onrender.com/authors HTTP/1.1 
 Content-Type: application/json
 
 {
   "authorLastName": "McTesterson",
-  "authorFirstName": "Testy",
+  "authorFirstName": "Tester",
   "birthdate": "October 21, 1989",
   "website": "testthis.com"
 }
 
 ### POST add title to database
-POST http://localhost:8080/titles HTTP/1.1 
+POST https://yanezproject2library.onrender.com/titles HTTP/1.1 
 Content-Type: application/json
 
 {
@@ -64,7 +52,7 @@ Content-Type: application/json
 }
 
 ### PUT: Update an author by ID (test)
-PUT http://localhost:8080/authors/646d5f0b57f98a16c4ab4b29 HTTP/1.1 
+PUT https://yanezproject2library.onrender.com/authors/646d5f0b57f98a16c4ab4b29 HTTP/1.1 
 Content-Type: application/json
 
 {
@@ -75,7 +63,7 @@ Content-Type: application/json
 }
 
 ### PUT: Update a title by ID (test)
-PUT http://localhost:8080/titles/646d5f0e57f98a16c4ab4b2a HTTP/1.1 
+PUT https://yanezproject2library.onrender.com/titles/646d5f0e57f98a16c4ab4b2a HTTP/1.1 
 Content-Type: application/json
 
 {
@@ -89,11 +77,11 @@ Content-Type: application/json
 }
 
 ### DELETE an author by ID (test)
-DELETE http://localhost:8080/authors/646d60f557f98a16c4ab4b2c HTTP/1.1 
+DELETE https://yanezproject2library.onrender.com/authors/646d70b057ea8543eef69293 HTTP/1.1 
 Content-Type: application/json
 
 ### DELETE a title by ID (test)
-DELETE http://localhost:8080/titles/646d60bb57f98a16c4ab4b2b HTTP/1.1 
+DELETE https://yanezproject2library.onrender.com/titles/646d60bb57f98a16c4ab4b2b HTTP/1.1 
 Content-Type: application/json
 
 

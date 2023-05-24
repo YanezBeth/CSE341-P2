@@ -3,7 +3,9 @@ const ObjectId = require('mongodb').ObjectId;
 const express = require('express');
 const router = express.Router();
 
-//Get all authors from the database
+/*
+Get all authors from the database
+*/
 const getAuthors = async (req, res) => {
     try {
     const result = await mongodb.getDb().db().collection('authors').find();
@@ -19,15 +21,31 @@ const getAuthors = async (req, res) => {
   }
 };
 
-//POST new author
+/*
+GET one author by ID
+*/
+const oneAuthor = async (req, res) => {
+  const authorId = new ObjectId(req.params.id);
+  const result = await mongodb.getDb().db().collection('authors').find({
+    _id: authorId
+  });
+  result.toArray().then((lists) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200).json(lists[0]);
+  });
+};
+
+/*
+POST: add a new author
+*/
 const addAuthor = async (req, res) => {
     try {
       //console.log('addAuthor', req.body);
     const newAuthor = {   
-      birthdate: req.body.birthdate,
-      website: req.body.website,
+      authorLastName: req.body.authorLastName,
       authorFirstName: req.body.authorFirstName,
-      authorLastName: req.body.authorLastName       
+      birthdate: req.body.birthdate,
+      website: req.body.website     
     };
 
     const result = await mongodb.getDb().db().collection('authors').insertOne(newAuthor);
@@ -48,10 +66,63 @@ const addAuthor = async (req, res) => {
     });
   }
 };
+
+/*
+PUT route for updating an author 
+*/
+const updateAuthor = async (req, res) => {
+    const authorID = new ObjectId(req.params.id);
+    const upAuthor = {
+      authorLastName: req.body.authorLastName,
+      authorFirstName: req.body.authorFirstName,
+      birthdate: req.body.birthdate,
+      website: req.body.website  
+    };
+    const result = await mongodb.getDb().db().collection('authors').updateOne(
+      {
+        _id: authorID
+      },
+      {
+        $set: upAuthor
+      }
+    );
+    if (result.modifiedCount === 1) {
+      res.status(204).json({
+        message: 'Author updated successfully'
+      });
+    } else {
+      res.status(404).json({
+        message: 'Author not found'
+      });
+    }
+};
+
+/*
+DELETE route for deleting an author
+*/
+const deleteAuthor = async (req, res) => {
+  const deleteAuthorID = new ObjectId(req.params.id);
+  const result = await mongodb.getDb().db().collection('authors').deleteOne({
+    _id: deleteAuthorID
+  });
+  if (result.deletedCount === 1) {
+    res.status(200).json({
+      message: 'Author deleted successfully'
+    });
+  } else {
+    res.status(404).json({
+      message: 'Author not found'
+    });
+  }
+};
+
   
 
 
 module.exports = {
     getAuthors,
-    addAuthor
+    oneAuthor,
+    addAuthor,
+    updateAuthor,
+    deleteAuthor
 }

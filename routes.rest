@@ -1,18 +1,52 @@
+### RENDER https://yanezproject2library.onrender.com
+
+### RENDER GET all authors in database
+GET https://yanezproject2library.onrender.com/authors
+
+### RENDER GET all titles in database 
+GET https://yanezproject2library.onrender.com/titles
+
 ### GET all titles in database 
 GET http://localhost:8080/titles
 
 ### GET all authors in database
 GET http://localhost:8080/authors
 
+
+###RENDER GET an author by ID (Mo Willems)
+GET https://yanezproject2library.onrender.com/authors/646a85407eab2340292fe61f
+
+### GET an author by ID (Mo Willems)
+GET http://localhost:8080/authors/646a85407eab2340292fe61f
+
+### GET an author by ID (Amy Krouse Rosenthal)
+GET http://localhost:8080/authors/646a858b7eab2340292fe620
+
+### RENDER GET a title by ID (Today I Will Fly!)
+GET https://yanezproject2library.onrender.com/titles/64659093b272aefcca51607e
+
+### GET a title by ID (Today I Will Fly!)
+GET http://localhost:8080/titles/64659093b272aefcca51607e
+
+### GET a title by ID (I Wish You More)
+GET http://localhost:8080/titles/64685775bf42815a12a244e9
+
+
+### GET a title by ID (Test)
+GET http://localhost:8080/titles/646d5f0e57f98a16c4ab4b2a
+
+### GET an author by ID (test)
+GET http://localhost:8080/authors/646d5f0b57f98a16c4ab4b29
+
 ### POST add author to database 
 POST http://localhost:8080/authors HTTP/1.1 
 Content-Type: application/json
 
 {
+  "authorLastName": "McTesterson",
+  "authorFirstName": "Testy",
   "birthdate": "October 21, 1989",
-  "website": "alex",
-  "authorFirstName": "alex",
-  "authorLastName": "heighton"
+  "website": "testthis.com"
 }
 
 ### POST add title to database
@@ -20,11 +54,47 @@ POST http://localhost:8080/titles HTTP/1.1
 Content-Type: application/json
 
 {
-  "title": "I Wish You More",
+  "title": "Sample",
   "genre": "Fiction",
   "audience": "Children",
   "publisher": "Chronicle Books LLC",
   "isbn": "9781452126999",
-  "authorFirstName": "Amy",
-  "authorLastName": "Rosenthal"
+  "authorFirstName": "Testy",
+  "authorLastName": "McTesterson"
 }
+
+### PUT: Update an author by ID (test)
+PUT http://localhost:8080/authors/646d5f0b57f98a16c4ab4b29 HTTP/1.1 
+Content-Type: application/json
+
+{
+  "authorLastName": "McTesterson",
+  "authorFirstName": "Testy",
+  "birthdate": "October 03, 2012",
+  "website": "thisIsaTest.com"
+}
+
+### PUT: Update a title by ID (test)
+PUT http://localhost:8080/titles/646d5f0e57f98a16c4ab4b2a HTTP/1.1 
+Content-Type: application/json
+
+{
+  "title": "Test",
+  "genre": "Horror",
+  "audience": "Adults",
+  "publisher": "BYU-ID",
+  "isbn": "0000000000000",
+  "authorFirstName": "Testy",
+  "authorLastName": "McTesterson"
+}
+
+### DELETE an author by ID (test)
+DELETE http://localhost:8080/authors/646d60f557f98a16c4ab4b2c HTTP/1.1 
+Content-Type: application/json
+
+### DELETE a title by ID (test)
+DELETE http://localhost:8080/titles/646d60bb57f98a16c4ab4b2b HTTP/1.1 
+Content-Type: application/json
+
+
+###

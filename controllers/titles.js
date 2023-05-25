@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 const getTitles = async (req, res) => {
-    try {
+  try {
     const result = await mongodb.getDb().db().collection('titles').find();
     result.toArray().then((lists) => {
       res.setHeader('Content-Type', 'application/json');
@@ -39,7 +39,7 @@ const addTitle = async (req, res) => {
     publisher: req.body.publisher,
     isbn: req.body.isbn,
     authorFirstName: req.body.authorFirstName,
-    authorLastName: req.body.authorLastName,          
+    authorLastName: req.body.authorLastName,
   };
 
   const result = await mongodb.getDb().db().collection('titles').insertOne(newTitle);
@@ -67,16 +67,13 @@ const updateTitle = async (req, res) => {
     publisher: req.body.publisher,
     isbn: req.body.isbn,
     authorFirstName: req.body.authorFirstName,
-    authorLastName: req.body.authorLastName, 
+    authorLastName: req.body.authorLastName,
   };
-  const result = await mongodb.getDb().db().collection('titles').updateOne(
-    {
-      _id: titleID
-    },
-    {
-      $set: upTitle
-    }
-  );
+  const result = await mongodb.getDb().db().collection('titles').updateOne({
+    _id: titleID
+  }, {
+    $set: upTitle
+  });
   if (result.modifiedCount === 1) {
     res.status(204).json({
       message: 'Title updated successfully'
@@ -92,27 +89,27 @@ const updateTitle = async (req, res) => {
 DELETE route for deleting an author
 */
 const deleteTitle = async (req, res) => {
-const deleteTitleID = new ObjectId(req.params.id);
-const result = await mongodb.getDb().db().collection('titles').deleteOne({
-  _id: deleteTitleID
-});
-if (result.deletedCount === 1) {
-  res.status(200).json({
-    message: 'Title deleted successfully'
+  const deleteTitleID = new ObjectId(req.params.id);
+  const result = await mongodb.getDb().db().collection('titles').deleteOne({
+    _id: deleteTitleID
   });
-} else {
-  res.status(404).json({
-    message: 'Title not found'
-  });
-}
+  if (result.deletedCount === 1) {
+    res.status(200).json({
+      message: 'Title deleted successfully'
+    });
+  } else {
+    res.status(404).json({
+      message: 'Title not found'
+    });
+  }
 };
 
 
 
 module.exports = {
-    getTitles,
-    oneTitle,
-    addTitle,
-    updateTitle,
-    deleteTitle
+  getTitles,
+  oneTitle,
+  addTitle,
+  updateTitle,
+  deleteTitle
 }

@@ -13,7 +13,9 @@ app
   .use(cors())
   .use(bodyParser.json()) //express deprecated bodyParser?
   .use(express.json()) // for parsing json
-  .use(express.urlencoded({ extended: true })) // for parsing 
+  .use(express.urlencoded({
+    extended: true
+  })) // for parsing 
   .use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, x-Requested-with, Content-Type, Accept, Z-Key'); // Allow CORS so I can test API on React
@@ -23,12 +25,27 @@ app
   })
   .use('/', require('./convey'));
 
+// Handling Errors
+app.use((err, req, res, next) => {
+  // console.log(err);
+  err.statusCode = err.statusCode || 500;
+  err.message = err.message || "Internal Server Error";
+  res.status(err.statusCode).json({
+    message: err.message,
+  });
+});
+
+//from Brother Birch's code, catch all that keeps it running but logs the error
+process.on('uncaughtException', (err, origin) => {
+  console.log(process.stderr.fd, `Caught exception: ${err}\n` + `Exception origin: ${origin}`);
+});
+
 
 mongodb.initDb((err) => {
-    if (err) {
-      console.log(err);
-    } else {
-      app.listen(port);
-      console.log(`Connected to DB and listening on ${port}`);
-    }
-  });
+  if (err) {
+    console.log(err);
+  } else {
+    app.listen(port);
+    console.log(`Connected to DB and listening on ${port}`);
+  }
+});

@@ -32,7 +32,7 @@ const oneAuthor = async (req, res) => {
       _id: authorId
     });
     if (!result) {
-      return res.status(404).json('Author not found');
+      return res.status(400).json('Author not found');
     };
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(result);
@@ -64,7 +64,7 @@ const addAuthor = async (req, res) => {
         authorId: result.insertedId
       });
     } else {
-      res.status(500).json('An error occurred. Unable to add author.');
+      res.status(400).json('An error occurred. Unable to add author.');
     }
   } catch (error) {
     console.error('Error adding author to database:', error);
@@ -101,7 +101,7 @@ const updateAuthor = async (req, res) => {
         message: 'Author updated successfully'
       });
     } else {
-      res.status(404).json('Author not found');
+      res.status(400).json('Author not found');
     }
   } catch (error) {
     console.error('Error updating author in database:', error);
@@ -126,7 +126,7 @@ const deleteAuthor = async (req, res) => {
         message: 'Author deleted successfully'
       });
     } else {
-      res.status(404).json('Author not found');
+      res.status(400).json('Author not found');
     }
   } catch (error) {
     console.error('Error deleting author from database:', error);

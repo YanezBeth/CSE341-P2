@@ -25,7 +25,7 @@ const oneTitle = async (req, res) => {
       _id: titleId
     });
     if (!result) {
-      return res.status(404).json('Title not found');
+      return res.status(400).json('Title not found');
     }
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(result);
@@ -56,7 +56,7 @@ const addTitle = async (req, res) => {
         titleId: result.insertedId
       });
     } else {
-      res.status(500).json({
+      res.status(400).json({
         message: 'An error occurred. Unable to add title'
       });
     }
@@ -94,7 +94,7 @@ const updateTitle = async (req, res) => {
         message: 'Title updated successfully'
       });
     } else {
-      res.status(404).json({
+      res.status(400).json({
         message: 'Title not found'
       });
     }
@@ -120,7 +120,7 @@ const deleteTitle = async (req, res) => {
         message: 'Title deleted successfully'
       });
     } else {
-      res.status(404).json({
+      res.status(400).json({
         message: 'Title not found'
       });
     }

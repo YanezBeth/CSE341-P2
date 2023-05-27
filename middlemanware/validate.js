@@ -20,6 +20,31 @@ const saveAuthor = (req, res, next) => {
     });
 };
 
+const saveTitle = (req, res, next) => {
+    const validationRule = {
+        title: 'required|string',
+        genre: 'required|string',
+        audience: 'required|string',
+        publisher: 'string',
+        isbn: 'required|string',
+        authorFirstName: 'required|string',
+        authorLastName: 'required|string',
+    };
+    validator(req.body, validationRule, {}, (err, status) => {
+        if (!status) {
+            res.status(412).send({
+                success: false,
+                message: 'Validation failed',
+                data: err
+            });
+        } else {
+            next();
+        }
+    });
+};
+
+
 module.exports = {
-    saveAuthor
+    saveAuthor,
+    saveTitle
 };

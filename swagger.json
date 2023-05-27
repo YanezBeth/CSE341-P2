@@ -29,38 +29,36 @@
       },
       "post": {
         "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "example": "any"
-                },
-                "genre": {
-                  "example": "any"
-                },
-                "audience": {
-                  "example": "any"
-                },
-                "publisher": {
-                  "example": "any"
-                },
-                "isbn": {
-                  "example": "any"
-                },
-                "authorFirstName": {
-                  "example": "any"
-                },
-                "authorLastName": {
-                  "example": "any"
-                }
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "example": "any"
+              },
+              "genre": {
+                "example": "any"
+              },
+              "audience": {
+                "example": "any"
+              },
+              "publisher": {
+                "example": "any"
+              },
+              "isbn": {
+                "example": "any"
+              },
+              "authorFirstName": {
+                "example": "any"
+              },
+              "authorLastName": {
+                "example": "any"
               }
             }
           }
-        ],
+        }],
         "responses": {
           "201": {
             "description": "Created"
@@ -77,14 +75,12 @@
         "produces": [
           "application/json"
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }],
         "responses": {
           "200": {
             "description": "OK"
@@ -93,8 +89,7 @@
       },
       "put": {
         "description": "",
-        "parameters": [
-          {
+        "parameters": [{
             "name": "id",
             "in": "path",
             "required": true,
@@ -142,14 +137,12 @@
       },
       "delete": {
         "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }],
         "responses": {
           "200": {
             "description": "OK"
@@ -178,29 +171,27 @@
       },
       "post": {
         "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "authorLastName": {
-                  "example": "any"
-                },
-                "authorFirstName": {
-                  "example": "any"
-                },
-                "birthdate": {
-                  "example": "any"
-                },
-                "website": {
-                  "example": "any"
-                }
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "authorLastName": {
+                "example": "any"
+              },
+              "authorFirstName": {
+                "example": "any"
+              },
+              "birthdate": {
+                "example": "any"
+              },
+              "website": {
+                "example": "any"
               }
             }
           }
-        ],
+        }],
         "responses": {
           "201": {
             "description": "Created"
@@ -220,14 +211,12 @@
         "produces": [
           "application/json"
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }],
         "responses": {
           "200": {
             "description": "OK"
@@ -236,8 +225,7 @@
       },
       "put": {
         "description": "",
-        "parameters": [
-          {
+        "parameters": [{
             "name": "id",
             "in": "path",
             "required": true,
@@ -276,14 +264,12 @@
       },
       "delete": {
         "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }],
         "responses": {
           "200": {
             "description": "OK"

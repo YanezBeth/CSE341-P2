@@ -1,3 +1,4 @@
+//Decided not to go this route and used middleware instead
 const {
   check
 } = require('express-validator');
@@ -38,7 +39,24 @@ const authorValidated = (req, res, next) => {
   })
 }
 
+const titleValidated = (req, res, next) => {
+  const errors = validationResult(req)
+  if (errors.isEmpty()) {
+    return next()
+  }
+  const extractedErrors = []
+  errors.array().map(err => extractedErrors.push({
+    [err.param]: err.msg
+  }))
+
+  return res.status(500).json({
+    errors: extractedErrors,
+  })
+}
+
 module.exports = {
   authorValidation,
   authorValidated,
+  titleValidation,
+  titleValidated
 }

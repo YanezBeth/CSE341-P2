@@ -5,7 +5,7 @@ const doc = {
     title: 'My API',
     description: 'Yanez, CSE341. Week 5, Personal Project2. A personal libarary database.',
   },
-  host: 'yanezcse341.onrender.com',
+  host: 'yanezproject2library.onrender.com',
   schemes: ['https'],
 };
 

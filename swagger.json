@@ -5,12 +5,19 @@
     "description": "Yanez, CSE341. Week 5, Personal Project2. A personal libarary database.",
     "version": "1.0.0"
   },
-  "host": "yanezcse341.onrender.com",
+  "host": "yanezproject2library.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
   ],
   "paths": {
+    "/api-docs": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
     "/titles/": {
       "get": {
         "description": "",
@@ -215,7 +222,7 @@
                 "birthdate": {
                   "example": "any"
                 },
-                "website": {
+                "email": {
                   "example": "any"
                 }
               }
@@ -288,7 +295,7 @@
                 "birthdate": {
                   "example": "any"
                 },
-                "website": {
+                "email": {
                   "example": "any"
                 }
               }

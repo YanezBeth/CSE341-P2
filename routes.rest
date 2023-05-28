@@ -16,11 +16,17 @@ GET http://localhost:8080/authors
 ###RENDER GET an author by ID (Mo Willems)
 GET https://yanezproject2library.onrender.com/authors/646a85407eab2340292fe61f
 
+### GET an author by ID (Mo Willems)
+GET http://localhost:8080/authors/646a85407eab2340292fe61f
+
 ### GET an author by ID (Amy Krouse Rosenthal)
 GET https://yanezproject2library.onrender.com/authors/646a858b7eab2340292fe620
 
 ###RENDER GET an author by ID (test)
-GET https://yanezproject2library.onrender.com/authors/6472d59872a087b97b9b4730
+GET https://yanezproject2library.onrender.com/authors/6472dd4d72a087b97b9b4731
+
+### GET an author by ID (test)
+GET http://localhost:8080/authors/6472dd4d72a087b97b9b4731
 
 ### RENDER GET a title by ID (Today I Will Fly!)
 GET https://yanezproject2library.onrender.com/titles/64659093b272aefcca51607e

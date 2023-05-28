@@ -30,7 +30,7 @@ const oneAuthor = async (req, res) => {
     const authorId = new ObjectId(req.params.id);
     const result = await mongodb.getDb().db().collection('authors').findOne({
       _id: authorId
-    }).toArray();
+    });
     if (!result) {
       return res.status(400).json('Author not found');
     }

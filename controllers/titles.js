@@ -21,7 +21,7 @@ const getTitles = async (req, res) => {
 const oneTitle = async (req, res) => {
   try {
     const titleId = new ObjectId(req.params.id);
-    const result = await mongodb.getDb().db().collection('titles').find({
+    const result = await mongodb.getDb().db().collection('titles').findOne({
       _id: titleId
     });
     if (!result) {

@@ -19,6 +19,9 @@ GET https://yanezproject2library.onrender.com/authors/646a85407eab2340292fe61f
 ### GET an author by ID (Amy Krouse Rosenthal)
 GET https://yanezproject2library.onrender.com/authors/646a858b7eab2340292fe620
 
+###RENDER GET an author by ID (test)
+GET https://yanezproject2library.onrender.com/authors/6472d59872a087b97b9b4730
+
 ### RENDER GET a title by ID (Today I Will Fly!)
 GET https://yanezproject2library.onrender.com/titles/64659093b272aefcca51607e
 
@@ -36,7 +39,7 @@ Content-Type: application/json
 {
   "authorLastName": "McTesterson",
   "authorFirstName": "Tester",
-  "birthdate": "10/21/1989",
+  "birthdate": "10/15/1989",
   "email": "testthis@hotmail.com"
 }
 
@@ -55,11 +58,11 @@ Content-Type: application/json
 }
 
 ### PUT: Update an author by ID (test)
-PUT https://yanezproject2library.onrender.com/authors/646d5f0b57f98a16c4ab4b29 HTTP/1.1 
+PUT https://yanezproject2library.onrender.com/authors/6472d3ae72a087b97b9b472f HTTP/1.1 
 Content-Type: application/json
 
 {
-  "authorLastName": "McTesterson",
+  "authorLastName": "Testing",
   "authorFirstName": "Testy",
   "birthdate": "10/03/2012",
   "email": "thisIsaTest@gmail.com"

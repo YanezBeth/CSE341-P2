@@ -28,12 +28,12 @@ const oneAuthor = async (req, res) => {
       return res.status(400).json('Invalid Author ID');
     }
     const authorId = new ObjectId(req.params.id);
-    const result = await mongodb.getDb().db().collection('authors').find({
+    const result = await mongodb.getDb().db().collection('authors').findOne({
       _id: authorId
-    });
+    }).toArray();
     if (!result) {
       return res.status(400).json('Author not found');
-    };
+    }
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(result);
   } catch (error) {
@@ -43,6 +43,7 @@ const oneAuthor = async (req, res) => {
     });
   }
 };
+
 
 /*
 POST: add a new author
@@ -54,7 +55,7 @@ const addAuthor = async (req, res) => {
       authorLastName: req.body.authorLastName,
       authorFirstName: req.body.authorFirstName,
       birthdate: req.body.birthdate,
-      email: req.body.website
+      email: req.body.email
     };
 
     const result = await mongodb.getDb().db().collection('authors').insertOne(newAuthor);
@@ -87,7 +88,7 @@ const updateAuthor = async (req, res) => {
       authorLastName: req.body.authorLastName,
       authorFirstName: req.body.authorFirstName,
       birthdate: req.body.birthdate,
-      email: req.body.website
+      email: req.body.email
     };
     const result = await mongodb.getDb().db().collection('authors').replaceOne({
         _id: authorID

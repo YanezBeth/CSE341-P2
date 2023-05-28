@@ -12,7 +12,7 @@ const saveAuthor = (req, res, next) => {
         if (!status) {
             res.status(412).send({
                 success: false,
-                message: 'Validation failed',
+                message: 'Author validation failed',
                 data: err
             });
         } else {
@@ -35,7 +35,7 @@ const saveTitle = (req, res, next) => {
         if (!status) {
             res.status(412).send({
                 success: false,
-                message: 'Validation failed',
+                message: 'Title validation failed',
                 data: err
             });
         } else {

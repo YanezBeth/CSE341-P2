@@ -2,7 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongodb = require('./db/connect');
-const port = process.env.PORT || 8080;
+const port = process.env.PORT;
 const app = express();
 const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
@@ -23,16 +23,7 @@ app
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     next();
   })
-  .use('/', require('./convey'))
-  // Handling Errors
-  /*.use((err, req, res, next) => {
-    // console.log(err);
-    err.statusCode = err.statusCode || 500;
-    err.message = err.message || "Internal Server Error";
-    res.status(err.statusCode).json({
-      message: err.message,
-    });
-  })*/;
+  .use('/', require('./convey'));
 
 //from Brother Birch's code, catch all that keeps it running but logs the error
 process.on('uncaughtException', (err, origin) => {

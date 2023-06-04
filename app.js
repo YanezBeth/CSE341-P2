@@ -7,6 +7,17 @@ const app = express();
 const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
+const { auth } = require('express-openid-connect');
+require('dotenv').config();
+
+const config = {
+  authRequired: false,
+  auth0Logout: true,
+  secret: process.env.SECRET,
+  baseURL: process.env.BASE_URL,
+  clientID: process.env.CLIENT_ID,
+  issuerBaseURL: process.env.ISSUER_BASE_URL,
+};
 
 app
   .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument)) //must be first 
@@ -23,7 +34,9 @@ app
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     next();
   })
-  .use('/', require('./convey'));
+  .use('/', require('./convey'))
+  // auth router attaches /login, /logout, and /callback routes to the baseURL
+  .use(auth(config));
 
 //from Brother Birch's code, catch all that keeps it running but logs the error
 process.on('uncaughtException', (err, origin) => {

@@ -13,8 +13,8 @@ const getAccessToken = () => {
         'content-type': 'application/json'
       },
       body: JSON.stringify({
-        client_id: 'C6zNPdY1INNkgCctix1lA0ca7yn1Q9jS',
-        client_secret: 'Lwh9hqoAw6D8BBP0win6CcH66rghuwYxQU7-_iRXFnvD_9ypqm3-S2YYwrFWymuC',
+        client_id: process.env.CLIENT_ID,
+        client_secret: process.env.CLIENT_SECRET,
         audience: 'https://yanezproject2library.onrender.com',
         grant_type: 'client_credentials',
       }),

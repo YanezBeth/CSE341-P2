@@ -4,7 +4,7 @@ const {
 const dotenv = require('dotenv');
 dotenv.config();
 
-//from https://auth0.com/
+// from https://auth0.com/
 const config = {
   authRequired: false,
   auth0Logout: true,

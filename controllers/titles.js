@@ -2,7 +2,36 @@ const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 const express = require('express');
 const router = express.Router();
+const axios = require('axios');
 
+const getAccessToken = () => {
+  return new Promise((resolve, reject) => {
+    const options = {
+      method: 'POST',
+      url: 'https://dev-qsfk08gwjpmuj0b4.us.auth0.com/oauth/token',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        client_id: 'C6zNPdY1INNkgCctix1lA0ca7yn1Q9jS',
+        client_secret: 'Lwh9hqoAw6D8BBP0win6CcH66rghuwYxQU7-_iRXFnvD_9ypqm3-S2YYwrFWymuC',
+        audience: 'https://yanezproject2library.onrender.com',
+        grant_type: 'client_credentials',
+      }),
+    };
+
+    axios(options)
+      .then((response) => {
+        const {
+          access_token
+        } = response.data;
+        resolve(access_token);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+};
 
 const getTitles = async (req, res) => {
   try {
@@ -112,26 +141,42 @@ DELETE route for deleting an author
 const deleteTitle = async (req, res) => {
   try {
     const deleteTitleID = new ObjectId(req.params.id);
-    const result = await mongodb.getDb().db().collection('titles').deleteOne({
-      _id: deleteTitleID
-    });
-    if (result.deletedCount > 0) {
+
+    // Get the access token
+    const accessToken = await getAccessToken();
+
+    // Include the Authorization header with the access token
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
+
+    // Make the DELETE request to your API endpoint
+    const response = await axios.delete(
+      `https://yanezproject2library.onrender.com/titles/${deleteTitleID}`, {
+        headers
+      }
+    );
+
+    // Check the response status and send the appropriate JSON response
+    if (response.status === 200) {
       res.status(200).json({
-        message: 'Title deleted successfully'
+        message: 'Title deleted successfully',
       });
     } else {
       res.status(400).json({
-        message: 'Title not found'
+        message: 'Title not found',
       });
     }
   } catch (error) {
     console.error('Error deleting title from database:', error);
     res.status(500).json({
-      message: 'Unable to delete title from database'
+      message: 'Unable to delete title from database',
     });
   }
 };
 
+// Use the deleteTitle function as the DELETE route handler
+router.delete('/:id', deleteTitle);
 
 
 module.exports = {
@@ -139,5 +184,6 @@ module.exports = {
   oneTitle,
   addTitle,
   updateTitle,
-  deleteTitle
+  deleteTitle,
+  router
 }

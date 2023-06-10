@@ -17,7 +17,7 @@ const checkJwt = auth({
     tokenSigningAlg: 'HS256'
 });
 
-const checkScopes = requiredScopes('read:messages');
+const checkScopes = requiredScopes('write:messages');
 
 
 //Get all titles from the database

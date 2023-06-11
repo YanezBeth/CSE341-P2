@@ -140,6 +140,9 @@ DELETE route for deleting an author
 */
 const deleteTitle = async (req, res) => {
   try {
+    if (!ObjectId.isValid(req.params.id)) {
+      return res.status(400).json('Invalid Title ID');
+    }
     const deleteTitleID = new ObjectId(req.params.id);
     const result = await mongodb.getDb().db().collection('titles').deleteOne({
       _id: deleteTitleID
@@ -149,15 +152,11 @@ const deleteTitle = async (req, res) => {
         message: 'Title deleted successfully'
       });
     } else {
-      res.status(400).json({
-        message: 'Title not found'
-      });
+      res.status(400).json('Title not found');
     }
   } catch (error) {
     console.error('Error deleting title from database:', error);
-    res.status(500).json({
-      message: 'Unable to delete title from database'
-    });
+    res.status(500).json('Unable to delete title from database');
   }
 };
 

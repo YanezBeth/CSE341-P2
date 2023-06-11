@@ -15,8 +15,9 @@ const oidcConfig = {
     secret: process.env.SECRET,
     baseURL: process.env.BASE_URL,
     clientID: process.env.CLIENT_ID,
-    issuerBaseURL: process.env.ISSUER_BASE_URL,
+    issuerBaseURL: process.env.ISSUER_BASE_URL
 };
+
 
 // Add the OpenID Connect middleware
 router.use(oidcAuth(oidcConfig));
@@ -31,5 +32,6 @@ router.post('/', validation.saveTitle, titlesController.addTitle);
 router.put('/:id', validation.saveTitle, titlesController.updateTitle);
 // DELETE route
 router.delete('/:id', titlesController.deleteTitle);
+
 
 module.exports = router;

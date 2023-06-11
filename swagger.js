@@ -6,7 +6,9 @@ const doc = {
     description: 'Yanez, CSE341. Week 5, Personal Project2. A personal libarary database.',
   },
   host: 'yanezproject2library.onrender.com',
-  schemes: ['https'],
+  schemes: ['https']
+  /*host: 'localhost:8080',
+  schemes: ['http'] */
 };
 
 const outputFile = './swagger.json';

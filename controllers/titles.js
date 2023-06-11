@@ -140,48 +140,23 @@ DELETE route for deleting an author
 */
 const deleteTitle = async (req, res) => {
   try {
-    // check if the user is logged in with oidc.isAuthenticated()
-    // if not, redirect to the login page
-    if (!req.oidc.isAuthenticated()) {
-      return res.redirect('/login');
-    }
-
     const deleteTitleID = new ObjectId(req.params.id);
-
-    // Get the access token
-    //const accessToken = await getAccessToken();
-
-    // Include the Authorization header with the access token
-    /*const headers = {
-      Authorization: `Bearer ${accessToken}`,
-    };*/
-
-    /*// Make the DELETE request to your API endpoint
-    const response = await axios.delete(
-      `https://yanezproject2library.onrender.com/titles/${deleteTitleID}`, {
-        headers
-      }
-    );*/
-
     const result = await mongodb.getDb().db().collection('titles').deleteOne({
       _id: deleteTitleID
     });
-    console.log(result);
-
-    // Check the response status and send the appropriate JSON response
-    if (response.status === 200) {
+    if (result.deletedCount > 0) {
       res.status(200).json({
-        message: 'Title deleted successfully',
+        message: 'Title deleted successfully'
       });
     } else {
       res.status(400).json({
-        message: 'Title not found',
+        message: 'Title not found'
       });
     }
   } catch (error) {
     console.error('Error deleting title from database:', error);
     res.status(500).json({
-      message: 'Unable to delete title from database',
+      message: 'Unable to delete title from database'
     });
   }
 };
@@ -196,5 +171,4 @@ module.exports = {
   addTitle,
   updateTitle,
   deleteTitle,
-  router
 }

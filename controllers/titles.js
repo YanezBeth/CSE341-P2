@@ -1,8 +1,8 @@
 const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 const express = require('express');
-const router = express.Router();
-const axios = require('axios');
+//const router = express.Router();
+//const axios = require('axios');
 
 /*const getAccessToken = () => {
   return new Promise((resolve, reject) => {

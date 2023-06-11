@@ -100,10 +100,10 @@ Content-Type: application/json
 ### login
 GET http://localhost:8080/login HTTP/1.1
 
-
 ### logout
 GET http://localhost:8080/logout HTTP/1.1
-###
+
 ### Check login status
 GET http://localhost:8080/checkLoginStatus HTTP/1.1
+
 ###
